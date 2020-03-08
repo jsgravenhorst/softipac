@@ -1,0 +1,1042 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - bd_softipac@localhost" uuid="248adf79-bee2-48d1-a93f-574c8c2b144f">
+    <database-info product="MySQL" version="5.7.21-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.46 ( Revision: 9cc87a48e75c2d2e87c1a293b2862ce651cb256e )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
+      <schema id="1" name="bd_softipac"/>
+      <table id="2" parent="1" name="afinidad"/>
+      <table id="3" parent="1" name="cita"/>
+      <table id="4" parent="1" name="constitucionfamiliar"/>
+      <table id="5" parent="1" name="datos"/>
+      <table id="6" parent="1" name="diagnostico"/>
+      <table id="7" parent="1" name="documento"/>
+      <table id="8" parent="1" name="eps"/>
+      <table id="9" parent="1" name="escolaridad"/>
+      <table id="10" parent="1" name="estado"/>
+      <table id="11" parent="1" name="estimulo"/>
+      <table id="12" parent="1" name="genero"/>
+      <table id="13" parent="1" name="historiaclinica"/>
+      <table id="14" parent="1" name="hora"/>
+      <table id="15" parent="1" name="parentesco"/>
+      <table id="16" parent="1" name="perfil"/>
+      <table id="17" parent="1" name="remision"/>
+      <table id="18" parent="1" name="repertoriobasico"/>
+      <table id="19" parent="1" name="resistenciacambio"/>
+      <table id="20" parent="1" name="respestimulosenvisual"/>
+      <table id="21" parent="1" name="responsividad"/>
+      <table id="22" parent="1" name="rol"/>
+      <table id="23" parent="1" name="serviciosalud"/>
+      <table id="24" parent="1" name="tipocita"/>
+      <table id="25" parent="1" name="tipodiagnostico"/>
+      <table id="26" parent="1" name="tipodocumento"/>
+      <table id="27" parent="1" name="tipoestimulo"/>
+      <table id="28" parent="1" name="tipohora"/>
+      <table id="29" parent="1" name="tipousuario"/>
+      <table id="30" parent="1" name="usuario"/>
+      <column id="31" parent="2" name="idafinidad">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="32" parent="2" name="usuario_idusuario">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="33" parent="2" name="idfamiliar">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="34" parent="2" name="fk_parentesco_usuario1_idx">
+        <columns>usuario_idusuario</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="35" parent="2" name="fk_parentesco_usuario2_idx">
+        <columns>idfamiliar</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="36" parent="2" name="PRIMARY">
+        <columns>idafinidad
+usuario_idusuario
+idfamiliar</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="37" parent="2" name="fk_parentesco_familiar">
+        <columns>idfamiliar</columns>
+        <ref-key>~.usuario.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="38" parent="2" name="fk_parentesco_usuario">
+        <columns>usuario_idusuario</columns>
+        <ref-key>~.usuario.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="39" parent="3" name="idcita">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="40" parent="3" name="fechacitaini">
+        <data-type>date</data-type>
+      </column>
+      <column id="41" parent="3" name="motivoconsulta">
+        <data-type>varchar(4000)</data-type>
+      </column>
+      <column id="42" parent="3" name="expectativas">
+        <data-type>varchar(4000)</data-type>
+      </column>
+      <column id="43" parent="3" name="recomtenercta">
+        <data-type>varchar(4000)</data-type>
+      </column>
+      <column id="44" parent="3" name="infogral">
+        <data-type>varchar(4000)</data-type>
+      </column>
+      <column id="45" parent="3" name="observacion">
+        <data-type>varchar(4000)</data-type>
+      </column>
+      <column id="46" parent="3" name="tipocita_idtipocita">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="47" parent="3" name="usuario_idusuario">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="48" parent="3" name="hora_idhora">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="49" parent="3" name="hora_tipohora_idtipohora">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="50" parent="3" name="usuario_idusuapl">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="51" parent="3" name="estado_idestado">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="52" parent="3" name="fk_cita_estado1_idx">
+        <columns>estado_idestado</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="53" parent="3" name="fk_cita_hora">
+        <columns>hora_idhora
+hora_tipohora_idtipohora</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="54" parent="3" name="fk_cita_hora1_idx">
+        <columns>hora_idhora</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="55" parent="3" name="fk_cita_tipocita1_idx">
+        <columns>tipocita_idtipocita</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="56" parent="3" name="fk_cita_usuario1_idx">
+        <columns>usuario_idusuario</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="57" parent="3" name="fk_cita_usuario2_idx">
+        <columns>usuario_idusuapl</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="58" parent="3" name="PRIMARY">
+        <columns>idcita
+tipocita_idtipocita
+estado_idestado</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="59" parent="3" name="fk_cita_estado1">
+        <columns>estado_idestado</columns>
+        <ref-key>~.estado.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="60" parent="3" name="fk_cita_hora">
+        <columns>hora_idhora
+hora_tipohora_idtipohora</columns>
+        <ref-key>~.hora.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="61" parent="3" name="fk_cita_tipocita">
+        <columns>tipocita_idtipocita</columns>
+        <ref-key>~.tipocita.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="62" parent="3" name="fk_cita_usuapl">
+        <columns>usuario_idusuapl</columns>
+        <ref-key>~.usuario.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="63" parent="3" name="fk_cita_usuario">
+        <columns>usuario_idusuario</columns>
+        <ref-key>~.usuario.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="64" parent="4" name="idconstitucionfamiliar">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="65" parent="4" name="historiaclinica_idhistoriaclinica">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="66" parent="4" name="afinidad_idafinidad">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="67" parent="4" name="afinidad_usuario_idusuario">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="68" parent="4" name="afinidad_idfamiliar">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="69" parent="4" name="fk_constitucionfamiliar_afinidad1_idx">
+        <columns>afinidad_idafinidad
+afinidad_usuario_idusuario
+afinidad_idfamiliar</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="70" parent="4" name="fk_constitucionfamiliar_historia1_idx">
+        <columns>historiaclinica_idhistoriaclinica</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="71" parent="4" name="PRIMARY">
+        <columns>idconstitucionfamiliar
+historiaclinica_idhistoriaclinica
+afinidad_idafinidad
+afinidad_usuario_idusuario
+afinidad_idfamiliar</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="72" parent="4" name="fk_constitucionfamiliar_afinidad1">
+        <columns>afinidad_idafinidad
+afinidad_usuario_idusuario
+afinidad_idfamiliar</columns>
+        <ref-key>~.afinidad.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="73" parent="4" name="fk_constitucionfamiliar_historia1">
+        <columns>historiaclinica_idhistoriaclinica</columns>
+        <ref-key>~.historiaclinica.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="74" parent="5" name="iddatos">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="75" parent="5" name="datoscol">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="76" parent="5" name="PRIMARY">
+        <columns>iddatos</columns>
+        <primary>1</primary>
+      </key>
+      <column id="77" parent="6" name="iddiagnostico">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="78" parent="6" name="diagnostico">
+        <mandatory>1</mandatory>
+        <data-type>varchar(4000)</data-type>
+      </column>
+      <column id="79" parent="6" name="remitido">
+        <data-type>varchar(800)</data-type>
+      </column>
+      <column id="80" parent="6" name="tipodiagnostico_idtipodiagnostico">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="81" parent="6" name="usuario_idusuario">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="82" parent="6" name="fk_diagnostico_tipodiagnostico1_idx">
+        <columns>tipodiagnostico_idtipodiagnostico</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="83" parent="6" name="fk_diagnostico_usuario1_idx">
+        <columns>usuario_idusuario</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="84" parent="6" name="PRIMARY">
+        <columns>iddiagnostico
+tipodiagnostico_idtipodiagnostico
+usuario_idusuario</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="85" parent="6" name="fk_diagnostico_tipodiagnostico1">
+        <columns>tipodiagnostico_idtipodiagnostico</columns>
+        <ref-key>~.tipodiagnostico.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="86" parent="6" name="fk_diagnostico_usuario1">
+        <columns>usuario_idusuario</columns>
+        <ref-key>~.usuario.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="87" parent="7" name="iddocumento">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="88" parent="7" name="documento">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="89" parent="7" name="tipodocumento_idtipodocumento">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="90" parent="7" name="fk_documento_tipodocumento1_idx">
+        <columns>tipodocumento_idtipodocumento</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="91" parent="7" name="PRIMARY">
+        <columns>iddocumento</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="92" parent="7" name="fk_documento_tipodocumento1">
+        <columns>tipodocumento_idtipodocumento</columns>
+        <ref-key>~.tipodocumento.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="93" parent="8" name="ideps">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="94" parent="8" name="razonsocial">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="95" parent="8" name="nit">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="96" parent="8" name="direccion">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="97" parent="8" name="telefono">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="98" parent="8" name="email">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="99" parent="8" name="datos_iddatos">
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="100" parent="8" name="fk_eps_datos_idx">
+        <columns>datos_iddatos</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="101" parent="8" name="PRIMARY">
+        <columns>ideps</columns>
+        <primary>1</primary>
+      </key>
+      <column id="102" parent="9" name="idescolaridad">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="103" parent="9" name="escolaridad">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="104" parent="9" name="datos_iddatos">
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="105" parent="9" name="fk_escolaridad_datos_idx">
+        <columns>datos_iddatos</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="106" parent="9" name="PRIMARY">
+        <columns>idescolaridad</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="107" parent="9" name="fk_eps_datos1">
+        <columns>datos_iddatos</columns>
+        <ref-key>~.datos.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="108" parent="9" name="fk_escolaridad_datos1">
+        <columns>datos_iddatos</columns>
+        <ref-key>~.datos.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="109" parent="10" name="idestado">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="110" parent="10" name="estado">
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)</data-type>
+      </column>
+      <key id="111" parent="10" name="PRIMARY">
+        <columns>idestado</columns>
+        <primary>1</primary>
+      </key>
+      <column id="112" parent="11" name="idestimulo">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="113" parent="11" name="estimulo">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="114" parent="11" name="tipoestimulo_idtipoestimulo">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="115" parent="11" name="fk_estimulo_tipoestimulo1_idx">
+        <columns>tipoestimulo_idtipoestimulo</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="116" parent="11" name="PRIMARY">
+        <columns>idestimulo</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="117" parent="11" name="fk_estimulo_tipoestimulo1">
+        <columns>tipoestimulo_idtipoestimulo</columns>
+        <ref-key>~.tipoestimulo.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="118" parent="12" name="idgenero">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="119" parent="12" name="genero">
+        <data-type>varchar(2)</data-type>
+      </column>
+      <column id="120" parent="12" name="datos_iddatos">
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="121" parent="12" name="fk_genero_datos1_idx">
+        <columns>datos_iddatos</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="122" parent="12" name="PRIMARY">
+        <columns>idgenero</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="123" parent="12" name="fk_genero_datos1">
+        <columns>datos_iddatos</columns>
+        <ref-key>~.datos.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="124" parent="13" name="idhistoriaclinica">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="125" parent="13" name="motivoconsulta">
+        <data-type>varchar(4000)</data-type>
+      </column>
+      <column id="126" parent="13" name="habilespeciales">
+        <data-type>varchar(4000)</data-type>
+      </column>
+      <column id="127" parent="13" name="problemascond">
+        <data-type>varchar(4000)</data-type>
+      </column>
+      <column id="128" parent="13" name="caractambiente">
+        <data-type>varchar(4000)</data-type>
+      </column>
+      <key id="129" parent="13" name="PRIMARY">
+        <columns>idhistoriaclinica</columns>
+        <primary>1</primary>
+      </key>
+      <column id="130" parent="14" name="idhora">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="131" parent="14" name="hora">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="132" parent="14" name="tipohora_idtipohora">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="133" parent="14" name="fk_hora_tipohora1_idx">
+        <columns>tipohora_idtipohora</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="134" parent="14" name="PRIMARY">
+        <columns>idhora
+tipohora_idtipohora</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="135" parent="14" name="fk_hora_tipohora1">
+        <columns>tipohora_idtipohora</columns>
+        <ref-key>~.tipohora.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="136" parent="15" name="idparentesco">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="137" parent="15" name="parentesco">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="138" parent="15" name="datos_iddatos">
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="139" parent="15" name="fk_parentesco_datos_idx">
+        <columns>datos_iddatos</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="140" parent="15" name="PRIMARY">
+        <columns>idparentesco</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="141" parent="15" name="fk_parentesco_datos1">
+        <columns>datos_iddatos</columns>
+        <ref-key>~.datos.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="142" parent="16" name="usuario_idusuario">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="143" parent="16" name="rol_idrol">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="144" parent="16" name="fk_rol_perfil_idx">
+        <columns>rol_idrol</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="145" parent="16" name="PRIMARY">
+        <columns>usuario_idusuario
+rol_idrol</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="146" parent="16" name="fk_rol_perfil">
+        <columns>rol_idrol</columns>
+        <ref-key>~.rol.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="147" parent="16" name="fk_usuario_perfil">
+        <columns>usuario_idusuario</columns>
+        <ref-key>~.usuario.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="148" parent="17" name="idremision">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="149" parent="17" name="historiaclinica_idhistoriaclinica">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="150" parent="17" name="remitidopor">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="151" parent="17" name="motivo">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <index id="152" parent="17" name="fk_remision_historia1_idx">
+        <columns>historiaclinica_idhistoriaclinica</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="153" parent="17" name="PRIMARY">
+        <columns>idremision
+historiaclinica_idhistoriaclinica</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="154" parent="17" name="fk_remision_historia1">
+        <columns>historiaclinica_idhistoriaclinica</columns>
+        <ref-key>~.historiaclinica.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="155" parent="18" name="idrepertoriobasico">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="156" parent="18" name="contactovisual">
+        <mandatory>1</mandatory>
+        <data-type>varchar(2000)</data-type>
+      </column>
+      <column id="157" parent="18" name="atencion">
+        <mandatory>1</mandatory>
+        <data-type>varchar(2000)</data-type>
+      </column>
+      <column id="158" parent="18" name="imitacionmotora">
+        <mandatory>1</mandatory>
+        <data-type>varchar(2000)</data-type>
+      </column>
+      <column id="159" parent="18" name="imitacionobjetos">
+        <mandatory>1</mandatory>
+        <data-type>varchar(2000)</data-type>
+      </column>
+      <column id="160" parent="18" name="seguinstrucciones">
+        <mandatory>1</mandatory>
+        <data-type>varchar(2000)</data-type>
+      </column>
+      <column id="161" parent="18" name="esqcorporal">
+        <mandatory>1</mandatory>
+        <data-type>varchar(2000)</data-type>
+      </column>
+      <column id="162" parent="18" name="historiaclinica_idhistoriaclinica">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="163" parent="18" name="fk_repertoriobasico_historia1_idx">
+        <columns>historiaclinica_idhistoriaclinica</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="164" parent="18" name="PRIMARY">
+        <columns>idrepertoriobasico
+historiaclinica_idhistoriaclinica</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="165" parent="18" name="fk_repertoriobasico_historia1">
+        <columns>historiaclinica_idhistoriaclinica</columns>
+        <ref-key>~.historiaclinica.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="166" parent="19" name="idresistenciacambio">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="167" parent="19" name="cambioshorarios">
+        <mandatory>1</mandatory>
+        <data-type>varchar(2000)</data-type>
+      </column>
+      <column id="168" parent="19" name="rutas">
+        <mandatory>1</mandatory>
+        <data-type>varchar(2000)</data-type>
+      </column>
+      <column id="169" parent="19" name="ubicacionesp">
+        <mandatory>1</mandatory>
+        <data-type>varchar(2000)</data-type>
+      </column>
+      <column id="170" parent="19" name="apegoobjetos">
+        <mandatory>1</mandatory>
+        <data-type>varchar(2000)</data-type>
+      </column>
+      <column id="171" parent="19" name="actvrepetiivas">
+        <mandatory>1</mandatory>
+        <data-type>varchar(2000)</data-type>
+      </column>
+      <column id="172" parent="19" name="historiaclinica_idhistoriaclinica">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="173" parent="19" name="fk_resistenciacambio_historia1_idx">
+        <columns>historiaclinica_idhistoriaclinica</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="174" parent="19" name="PRIMARY">
+        <columns>idresistenciacambio
+historiaclinica_idhistoriaclinica</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="175" parent="19" name="fk_resistenciacambio_historia1">
+        <columns>historiaclinica_idhistoriaclinica</columns>
+        <ref-key>~.historiaclinica.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="176" parent="20" name="idrespestimulosenvisual">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="177" parent="20" name="orientamirada">
+        <mandatory>1</mandatory>
+        <data-type>varchar(2000)</data-type>
+      </column>
+      <column id="178" parent="20" name="buscamirada">
+        <mandatory>1</mandatory>
+        <data-type>varchar(2000)</data-type>
+      </column>
+      <column id="179" parent="20" name="giraobjetos">
+        <mandatory>1</mandatory>
+        <data-type>varchar(2000)</data-type>
+      </column>
+      <column id="180" parent="20" name="miradaperdida">
+        <mandatory>1</mandatory>
+        <data-type>varchar(2000)</data-type>
+      </column>
+      <column id="181" parent="20" name="reojo">
+        <mandatory>1</mandatory>
+        <data-type>varchar(2000)</data-type>
+      </column>
+      <column id="182" parent="20" name="acerca_aleja">
+        <mandatory>1</mandatory>
+        <data-type>varchar(2000)</data-type>
+      </column>
+      <column id="183" parent="20" name="entrecierra">
+        <mandatory>1</mandatory>
+        <data-type>varchar(2000)</data-type>
+      </column>
+      <column id="184" parent="20" name="perspectiva">
+        <mandatory>1</mandatory>
+        <data-type>varchar(2000)</data-type>
+      </column>
+      <column id="185" parent="20" name="historiaclinica_idhistoriaclinica">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="186" parent="20" name="fk_respestimulosenvisual_historia1_idx">
+        <columns>historiaclinica_idhistoriaclinica</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="187" parent="20" name="PRIMARY">
+        <columns>idrespestimulosenvisual
+historiaclinica_idhistoriaclinica</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="188" parent="20" name="fk_respestimulosenvisual_historia1">
+        <columns>historiaclinica_idhistoriaclinica</columns>
+        <ref-key>~.historiaclinica.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="189" parent="21" name="idresponsividad">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="190" parent="21" name="historiaclinica_idhistoriaclinica">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="191" parent="21" name="estimulo_idestimulo">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="192" parent="21" name="fk_responsividad_estimulo1_idx">
+        <columns>estimulo_idestimulo</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="193" parent="21" name="fk_responsividad_historia1_idx">
+        <columns>historiaclinica_idhistoriaclinica</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="194" parent="21" name="PRIMARY">
+        <columns>idresponsividad
+historiaclinica_idhistoriaclinica
+estimulo_idestimulo</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="195" parent="21" name="fk_responsividad_estimulo1">
+        <columns>estimulo_idestimulo</columns>
+        <ref-key>~.estimulo.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="196" parent="21" name="fk_responsividad_historia1">
+        <columns>historiaclinica_idhistoriaclinica</columns>
+        <ref-key>~.historiaclinica.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="197" parent="22" name="idrol">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="198" parent="22" name="rol">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="199" parent="22" name="PRIMARY">
+        <columns>idrol</columns>
+        <primary>1</primary>
+      </key>
+      <column id="200" parent="23" name="idserviciosalud">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="201" parent="23" name="servicio">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="202" parent="23" name="nit">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="203" parent="23" name="rips">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="204" parent="23" name="PRIMARY">
+        <columns>idserviciosalud</columns>
+        <primary>1</primary>
+      </key>
+      <column id="205" parent="24" name="idtipocita">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="206" parent="24" name="tipo">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <key id="207" parent="24" name="PRIMARY">
+        <columns>idtipocita</columns>
+        <primary>1</primary>
+      </key>
+      <column id="208" parent="25" name="idtipodiagnostico">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="209" parent="25" name="tipo">
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)</data-type>
+      </column>
+      <key id="210" parent="25" name="PRIMARY">
+        <columns>idtipodiagnostico</columns>
+        <primary>1</primary>
+      </key>
+      <column id="211" parent="26" name="idtipodocumento">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="212" parent="26" name="tipo">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="213" parent="26" name="datos_iddatos">
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="214" parent="26" name="fk_tipodocumento_datos_idx">
+        <columns>datos_iddatos</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="215" parent="26" name="PRIMARY">
+        <columns>idtipodocumento</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="216" parent="26" name="fk_tipodocumento_datos1">
+        <columns>datos_iddatos</columns>
+        <ref-key>~.datos.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="217" parent="27" name="idtipoestimulo">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="218" parent="27" name="tipo">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="219" parent="27" name="PRIMARY">
+        <columns>idtipoestimulo</columns>
+        <primary>1</primary>
+      </key>
+      <column id="220" parent="28" name="idtipohora">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="221" parent="28" name="tipo">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="222" parent="28" name="PRIMARY">
+        <columns>idtipohora</columns>
+        <primary>1</primary>
+      </key>
+      <column id="223" parent="29" name="idtipousuario">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="224" parent="29" name="tipo">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="225" parent="29" name="PRIMARY">
+        <columns>idtipousuario</columns>
+        <primary>1</primary>
+      </key>
+      <column id="226" parent="30" name="idusuario">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="227" parent="30" name="nombres">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="228" parent="30" name="primerapellido">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="229" parent="30" name="segundoapellido">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="230" parent="30" name="nombreusuario">
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="231" parent="30" name="password">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="232" parent="30" name="edad">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="233" parent="30" name="meses">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="234" parent="30" name="lugarnacimiento">
+        <data-type>varchar(70)</data-type>
+      </column>
+      <column id="235" parent="30" name="fechanacimiento">
+        <data-type>date</data-type>
+      </column>
+      <column id="236" parent="30" name="ocupacion">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="237" parent="30" name="tutela">
+        <data-type>varchar(2)</data-type>
+      </column>
+      <column id="238" parent="30" name="informante">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="239" parent="30" name="email">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="240" parent="30" name="direccion">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="241" parent="30" name="telefonofijo">
+        <data-type>varchar(15)</data-type>
+      </column>
+      <column id="242" parent="30" name="telefonocelular">
+        <data-type>varchar(15)</data-type>
+      </column>
+      <column id="243" parent="30" name="tipousuario_idtipousuario">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="244" parent="30" name="genero_idgenero">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="245" parent="30" name="estado_idestado">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="246" parent="30" name="escolaridad_idescolaridad">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="247" parent="30" name="serviciosalud_idserviciosalud">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="248" parent="30" name="eps_ideps">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="249" parent="30" name="parentesco_idparentesco">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="250" parent="30" name="documento_iddocumento">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="251" parent="30" name="fk_usuario_documento1_idx">
+        <columns>documento_iddocumento</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="252" parent="30" name="fk_usuario_eps1_idx">
+        <columns>eps_ideps</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="253" parent="30" name="fk_usuario_escolaridad1_idx">
+        <columns>escolaridad_idescolaridad</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="254" parent="30" name="fk_usuario_estado1_idx">
+        <columns>estado_idestado</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="255" parent="30" name="fk_usuario_genero1_idx">
+        <columns>genero_idgenero</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="256" parent="30" name="fk_usuario_parentesco1">
+        <columns>parentesco_idparentesco</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="257" parent="30" name="fk_usuario_serviciosalud1_idx">
+        <columns>serviciosalud_idserviciosalud</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="258" parent="30" name="fk_usuario_tipousuario1_idx">
+        <columns>tipousuario_idtipousuario</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="259" parent="30" name="PRIMARY">
+        <columns>idusuario</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="260" parent="30" name="fk_usuario_documento1">
+        <columns>documento_iddocumento</columns>
+        <ref-key>~.documento.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="261" parent="30" name="fk_usuario_eps1">
+        <columns>eps_ideps</columns>
+        <ref-key>~.eps.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="262" parent="30" name="fk_usuario_escolaridad1">
+        <columns>escolaridad_idescolaridad</columns>
+        <ref-key>~.escolaridad.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="263" parent="30" name="fk_usuario_estado1">
+        <columns>estado_idestado</columns>
+        <ref-key>~.estado.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="264" parent="30" name="fk_usuario_genero1">
+        <columns>genero_idgenero</columns>
+        <ref-key>~.genero.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="265" parent="30" name="fk_usuario_parentesco1">
+        <columns>parentesco_idparentesco</columns>
+        <ref-key>~.parentesco.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="266" parent="30" name="fk_usuario_serviciosalud1">
+        <columns>serviciosalud_idserviciosalud</columns>
+        <ref-key>~.serviciosalud.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="267" parent="30" name="fk_usuario_tipousuario1">
+        <columns>tipousuario_idtipousuario</columns>
+        <ref-key>~.tipousuario.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+    </database-model>
+  </data-source>
+</component>
