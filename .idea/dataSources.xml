@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="MySQL - tachinav_bd_softipac_local@localhost" uuid="248adf79-bee2-48d1-a93f-574c8c2b144f">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/tachinav_bd_softipac_final</jdbc-url>
-    </data-source>
     <data-source source="LOCAL" name="MySQL-tachinav_bd_softipac_final@apaautismocali.com" uuid="850968c8-3966-49d2-8a38-45dba386277c">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://apaautismocali.com:3306/tachinav_bd_softipac_final</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="MySQL-Local_tachinav_bd_softipac_final" uuid="917f3242-a0de-4b8b-a49a-fa85cd5ebee1">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:8889/tachinav_bd_softipac_final</jdbc-url>
+      <driver-properties>
+        <property name="autoReconnect" value="true" />
+        <property name="zeroDateTimeBehavior" value="CONVERT_TO_NULL" />
+        <property name="tinyInt1isBit" value="false" />
+        <property name="characterEncoding" value="utf8" />
+        <property name="characterSetResults" value="utf8" />
+        <property name="yearIsDateType" value="false" />
+      </driver-properties>
     </data-source>
   </component>
 </project>

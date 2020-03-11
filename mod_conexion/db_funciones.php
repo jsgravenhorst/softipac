@@ -12110,59 +12110,90 @@ public function cargarListadoEvaluacion($area) {
         return $datos_informe;
 
     }
-    /******************************************************************************************************************************************************************************************************************************************************
-     *                                                                                                  TERAPIA OCUPACIONAL
-    ********************************************************************************************************************************************************************************************************************************************************/
-    function crearHistoriaTEO($idpaciente, $idarea, $idTerapeuta)
-    {
-        $fecha = date("Y-m-d");
-        $query_crearHistoriaTeo = "INSERT INTO historiaclinica(area_idarea, usuario_idusuario, usuario_idusuario1, fechacreacion)
-                                    VALUES ('$idarea','$idpaciente','$idTerapeuta','$fecha')";
-        $sql_crearHistoriaTeo = mysqli_query($this->db->connect(),$query_crearHistoriaTeo);
+    /****************************************************************************************************************************************************************************/
+    /*   														        HISTORIA CLINICA TERAPIA OCUPACIONAL
+    /*****************************************************************************************************************************************************************************/
 
-        if ($sql_crearHistoriaTeo)
-        {
-            $resultlast = mysqli_query($this->db->connect(), "SELECT MAX(idhistoriaclinica) id FROM historiaclinica");
+    public function crearHistoriaTO($idpaciente, $idarea, $idTerapeuta){
+
+        $fecha = date("Y-m-d");
+
+        $query_crearHistoriaTO = "INSERT INTO historiaclinica (area_idarea,usuario_idusuario,usuario_idusuario1,fechacreacion)
+                                VALUES  ('$idarea','$idpaciente','$idTerapeuta','$fecha')";
+
+        $sql_crearHistoriaTO = mysqli_query($this->db->connect(),$query_crearHistoriaTO);
+
+        if($sql_crearHistoriaTO){
+
+            $resultlast = mysqli_query($this->db->connect(),"SELECT MAX(idhistoriaclinica) id FROM historiaclinica");
             $rowlast = mysqli_fetch_row($resultlast);
-            $idhistoria = $rowlast[0];
+            $idHistoria = $rowlast[0];
 
             /*******************************************************Antecedentes Familiares*****************************************************************************************/
-            $idant_familiar = 2;
-            $query_insAntecedenteFam = "INSERT INTO antecedente(tipoantecedente_idtipoantecedente, historiaclinica_idhistoriaclinica) VALUES ('$idant_familiar', '$idhistoria')";
-            $sql_insAntecedenteFam = mysqli_query($this->db->connect(), $query_insAntecedenteFam);
+            /**
+            p_idtipoantecedente = 2
+             */
+
+            $query_insAntecedente = "INSERT INTO antecedente (tipoantecedente_idtipoantecedente, historiaclinica_idhistoriaclinica) VALUES (2, $idHistoria)";
+            $sql_insAntecedente = mysqli_query($this->db->connect(),$query_insAntecedente);
+
 
             /*******************************************************Antecedentes Prenatales*****************************************************************************************/
-            $idant_prenatal = 4;
-            $query_insAntecedentePre = "INSERT INTO antecedente(tipoantecedente_idtipoantecedente, historiaclinica_idhistoriaclinica) VALUES ('$idant_prenatal', '$idhistoria')";
-            $sql_insAntecedentePre = mysqli_query($this->db->connect(), $query_insAntecedentePre);
-            /*******************************************************Antecedentes Posnatales*****************************************************************************************/
-            $idant_posnatal = 5;
-            $query_insAntecedentePos = "INSERT INTO antecedente(tipoantecedente_idtipoantecedente, historiaclinica_idhistoriaclinica) VALUES ('$idant_posnatal', '$idhistoria')";
-            $sql_insAntecedentePos = mysqli_query($this->db->connect(), $query_insAntecedentePos);
+            /**
+            p_idtipoantecedente = 4
+             */
+            $query_insAntecedentePre = "INSERT INTO antecedente (tipoantecedente_idtipoantecedente, historiaclinica_idhistoriaclinica) VALUES (4, $idHistoria)";
+            $sql_insAntecedentePre = mysqli_query($this->db->connect(),$query_insAntecedentePre);
+
+            /*******************************************************Antecedentes Postnatales*****************************************************************************************/
+            /**
+                p_idtipoantecedente = 5
+             */
+            $query_insAntecedentePos = "INSERT INTO antecedente (tipoantecedente_idtipoantecedente, historiaclinica_idhistoriaclinica) VALUES (5, $idHistoria)";
+            $sql_insAntecedentePos = mysqli_query($this->db->connect(),$query_insAntecedentePos);
+
+            /*******************************************************Antecedentes Personales*****************************************************************************************/
+            /**
+                p_idtipoantecedente = 6
+             */
+            $query_insAntecedentePer = "INSERT INTO antecedente (tipoantecedente_idtipoantecedente, historiaclinica_idhistoriaclinica) VALUES (6, $idHistoria)";
+            $sql_insAntecedentePer = mysqli_query($this->db->connect(),$query_insAntecedentePer);
             /*******************************************************Antecedentes Patologicos*****************************************************************************************/
-            $idant_patologico = 6;
-            $query_insAntecedentePat = "INSERT INTO antecedente(tipoantecedente_idtipoantecedente, historiaclinica_idhistoriaclinica) VALUES ('$idant_patologico', '$idhistoria')";
-            $sql_insAntecedentePat = mysqli_query($this->db->connect(), $query_insAntecedentePat);
+            /**
+                p_idtipoantecedente = 7
+             */
+            $query_insAntecedentePat = "INSERT INTO antecedente (tipoantecedente_idtipoantecedente, historiaclinica_idhistoriaclinica) VALUES (7, $idHistoria)";
+            $sql_insAntecedentePat = mysqli_query($this->db->connect(),$query_insAntecedentePat);
+
             /*******************************************************Antecedentes Quirurgicos*****************************************************************************************/
-            $idant_quirurgico = 7;
-            $query_insAntecedenteQui = "INSERT INTO antecedente(tipoantecedente_idtipoantecedente, historiaclinica_idhistoriaclinica) VALUES ('$idant_quirurgico', '$idhistoria')";
-            $sql_insAntecedenteQui = mysqli_query($this->db->connect(), $query_insAntecedenteQui);
+            /**
+            p_idtipoantecedente = 8
+             */
+            $query_insAntecedenteQui = "INSERT INTO antecedente (tipoantecedente_idtipoantecedente, historiaclinica_idhistoriaclinica) VALUES (8, $idHistoria)";
+            $sql_insAntecedenteQui = mysqli_query($this->db->connect(),$query_insAntecedenteQui);
+
             /*******************************************************Antecedentes Farmacologicos*****************************************************************************************/
-            $idant_farmacologico = 8;
-            $query_insAntecedenteFarm = "INSERT INTO antecedente(tipoantecedente_idtipoantecedente, historiaclinica_idhistoriaclinica) VALUES ('$idant_farmacologico', '$idhistoria')";
-            $sql_insAntecedenteFarm = mysqli_query($this->db->connect(), $query_insAntecedenteFarm);
+            /**
+              p_idtipoantecedente = 9
+             */
+            $query_insAntecedenteFar = "INSERT INTO antecedente (tipoantecedente_idtipoantecedente, historiaclinica_idhistoriaclinica) VALUES (9, $idHistoria)";
+            $sql_insAntecedenteFar = mysqli_query($this->db->connect(),$query_insAntecedenteFar);
+
             /*******************************************************Antecedentes Terapeuticos*****************************************************************************************/
-            $idant_terapuetico = 9;
-            $query_insAntecedenteTera = "INSERT INTO antecedente(tipoantecedente_idtipoantecedente, historiaclinica_idhistoriaclinica) VALUES ('$idant_terapuetico', '$idhistoria')";
-            $sql_insAntecedenteTera = mysqli_query($this->db->connect(), $query_insAntecedenteTera);
+            /**
+            p_idtipoantecedente = 10
+             */
+            $query_insAntecedenteTer = "INSERT INTO antecedente (tipoantecedente_idtipoantecedente, historiaclinica_idhistoriaclinica) VALUES (10, $idHistoria)";
+            $sql_insAntecedenteTer = mysqli_query($this->db->connect(),$query_insAntecedenteTer);
 
-            return $idhistoria;
-        }else
-            {
-                return 0;
-            }
+            return $idHistoria;
 
+        }else{
+            $idHistoria = 0;
+            return $idHistoria;
+        }
     }
+
     function consultarHistoriaTEO($idpaciente, $idarea)
     {
         $query_consultaHistoria   = "SELECT *
@@ -12185,6 +12216,58 @@ public function cargarListadoEvaluacion($area) {
             return false;
         }
     }
+
+    public function consultarAntPaciente($idAntecedente, $idhistoria){
+
+        $query_consultaAntPaciente   = "SELECT ant.idantecedente
+                                               ,porqueante
+                                        FROM antecedente ant
+                                        WHERE ant.historiaclinica_idhistoriaclinica = $idhistoria
+                                        AND ant.tipoantecedente_idtipoantecedente = $idAntecedente";
+
+        $sql_consultaAntPaciente   = mysqli_query( $this->db->connect(), $query_consultaAntPaciente );
+
+        $nro_consultaAntPaciente = mysqli_num_rows($sql_consultaAntPaciente);
+
+        if( $nro_consultaAntPaciente > 0 )
+        {
+            while ( $row_consultaAntPaciente = mysqli_fetch_assoc( $sql_consultaAntPaciente) )
+            {
+                $arreglo_consultaAntPaciente[] = $row_consultaAntPaciente;
+            }
+            return $arreglo_consultaAntPaciente;
+        }else{
+            return false;
+        }
+    }
+
+    public function consultarAntTerapeuticos($idhistoria){
+
+        $query_consultaAntTera   = "SELECT institucion
+                                             ,duracion
+                                             ,quetrabajo
+                                    FROM antecedente
+                                    WHERE historiaclinica_idhistoriaclinica = $idhistoria
+                                    AND tipoantecedente_idtipoantecedente = 10";
+
+        $sql_consultaAntTera   = mysqli_query( $this->db->connect(), $query_consultaAntTera );
+
+        $nro_consultaAntTera = mysqli_num_rows($sql_consultaAntTera);
+
+        if( $nro_consultaAntTera > 0 )
+        {
+            while ( $row_consultaAntTera = mysqli_fetch_assoc( $sql_consultaAntTera) )
+            {
+                $arreglo_consultaAntTera[] = $row_consultaAntTera;
+            }
+            return $arreglo_consultaAntTera;
+        }else{
+            return false;
+        }
+    }
+
+
+    /********************************************************************************************************************************************************************************/
 
     function consultarFechaProgramacion($idpaciente)
     {

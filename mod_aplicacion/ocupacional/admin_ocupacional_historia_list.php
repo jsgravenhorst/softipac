@@ -1,37 +1,37 @@
 <?php
-    require_once("../mod_conexion/db_funciones.php"); 
-    $dbf    = new DB_Funciones();
-    $idarea       = $_GET['idarea'];
-    $idTerapeuta  = $_SESSION['idusuario'];
-    $areaTeOcp    = 5;
-    
-    $listadoCitasInformacion    = $dbf->cargarListadoEvaluacion($idarea);
+require_once("../mod_conexion/db_funciones.php");
+$dbf            = new DB_Funciones();
+$idarea         = $_GET['idarea'];
+$idTerapeuta    = $_SESSION['idusuario'];
+$areaFon        = 5;
+
+$listadoCitasInformacion    = $dbf->cargarListadoEvaluacion($areaFon);
 ?>
 
 <div class="card mb-3">
     <div class="card-header alert alert-info">
-        <i class="fa fa-table"></i> Listado Terapia Ocupacional</div>
-        <div class="card-body">
-          <div class="table-responsive">
+        <i class="fa fa-table"></i> Listado terapia ocupacional</div>
+    <div class="card-body">
+        <div class="table-responsive">
             <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
-              <thead>
+                <thead>
                 <tr>
-                  <th>DOCUMENTO</th>
-                  <th>NOMBRES</th>
-                  <th>APELLIDO</th>
-                  <th>EPS</th>
-                  <th>ESCOLARIDAD</th>
-                  <th>CELULAR</th>
-                   <th>TERAPEUTA</th>
-                  <th>ACCIONES</th>
+                    <th>DOCUMENTO</th>
+                    <th>NOMBRES</th>
+                    <th>APELLIDO</th>
+                    <th>EPS</th>
+                    <th>ESCOLARIDAD</th>
+                    <th>CELULAR</th>
+                    <th>TERAPEUTA</th>
+                    <th>ACCIONES</th>
                 </tr>
-              </thead>
-              <tbody>
-                <?php 
-                if( $listadoCitasInformacion != false ) 
-                    {                                                                                                                                                                                                 
-                      for ( $i = 0; $i< sizeof($listadoCitasInformacion ); $i++ ) 
-                      {                                                                     
+                </thead>
+                <tbody>
+                <?php
+                if( $listadoCitasInformacion != false )
+                {
+                    for ( $i = 0; $i< sizeof($listadoCitasInformacion ); $i++ )
+                    {
                         $idcita              = $listadoCitasInformacion[$i]['idcita'];
                         $tipocita_idtipocita = $listadoCitasInformacion[$i]['tipocita_idtipocita'];
                         $documento           = $listadoCitasInformacion[$i]['documento'];
@@ -41,7 +41,7 @@
                         $eps                 = $listadoCitasInformacion[$i]['razonsocial'];
                         $escolaridad         = $listadoCitasInformacion[$i]['escolaridad'];
                         $telefonocelular     = $listadoCitasInformacion[$i]['telefonocelular'];
-                         $terapeuta          = $listadoCitasInformacion[$i]['terapeuta'];
+                        $terapeuta           = $listadoCitasInformacion[$i]['terapeuta'];
                         echo'<tr>
                                 <td>'.$documento.'</td>
                                 <td>'.$nombres.'</td>
@@ -49,7 +49,7 @@
                                 <td>'.$eps.'</td>
                                 <td>'.$escolaridad.'</td>
                                 <td>'.$telefonocelular.'</td>
-                                 <td>'.$terapeuta.'</td>
+                                <td>'.$terapeuta.'</td>
                                 <td>
                                     <div class="dropdown">
                                         <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown">
@@ -59,23 +59,26 @@
                                             <a href="citaInformacion.php?var='.$idusuario.'&cita='.$idcita.'&tipocita=1" class="btn btn-sm dropdown-item">
                                                 <i class="fa fa-file-text-o"></i> Ir a Cita Informaci&oacute;n
                                             </a>
-                                            <a href="javascript:consultarHistoria('.$idusuario.','.$idcita.','.$areaTeOcp.','.$idTerapeuta.')" class="btn btn-sm dropdown-item" >
+                                            <!--<a href="ocupacional_historia.php?var='.$idusuario.'&cita='.$idcita.'" class="btn btn-sm dropdown-item" >-->
+                                            <a href="javascript:consultaHistoriaTO('.$idusuario.','.$idcita.','.$areaFon.','.$idTerapeuta.')" class="btn btn-sm dropdown-item" >
                                                 <i class="fa fa-edit"></i> Historia Cl&iacute;nica
                                             </a>
-                                            <a href="fisioterapia_prueba.php" class="btn btn-sm dropdown-item" >
+                                            <a href="ocupacional_prueba.php?var='.$idusuario.'&cita='.$idcita.'&idarea='.$areaFon.'" class="btn btn-sm dropdown-item" >
+                                            <!--<a href="fonoaudiologia_prueba.php" class="btn btn-sm dropdown-item" >-->
                                                 <i class="fa fa-eraser"></i> Pruebas
                                             </a>
-                                            <a href="fisioterapia_informes.php" class="btn btn-sm dropdown-item" >
+                                            <a href="javascript:consultaInformeFinalFono('.$idusuario.','.$idcita.','.$areaFon.','.$idTerapeuta.')" class="btn btn-sm dropdown-item" >
+                                            <!--<a href="ocupacional_informes.php?var='.$idusuario.'&cita='.$idcita.'&idarea='.$areaFon.'" class="btn btn-sm dropdown-item" >-->
                                                 <i class="fa fa-file"></i> Informe Final
                                             </a>
                                         </div>
                                     </div><!-- .btn-group -->
                                 </td>
                             </tr>';
-                      }
                     }
+                }
                 ?>
-              </tbody>
+                </tbody>
             </table>
         </div>
     </div>
